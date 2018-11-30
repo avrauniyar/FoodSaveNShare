@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">FoodSaveNShare</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_schedule">Schedule</string>
+    <string name="title_addfood">Add Food</string>
+    <string name="title_contactus">ContactUs</string>
 </resources>
