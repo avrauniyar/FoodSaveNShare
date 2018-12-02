@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class HomeActivity extends AppCompatActivity{
+public class HomeActivity extends AppCompatActivity {
     private Toolbar mTopToolbar;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -20,20 +21,25 @@ public class HomeActivity extends AppCompatActivity{
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment fragment;
             switch (item.getItemId()) {
                 case R.id.navigation_home:
+                    mTopToolbar.setTitle("HOME");
                     return true;
                 case R.id.navigation_schedule:
-                    Intent schedule = new Intent(HomeActivity.this, Schedule.class);
-                    startActivity(schedule);
+                    mTopToolbar.setTitle("SCHEDULE");
+                    fragment = new ScheduleFragment();
+                    loadFragment(fragment);
                     return true;
                 case R.id.navigation_contactus:
-                    Intent contactus = new Intent(HomeActivity.this, ContactUs.class);
-                    startActivity(contactus);
+                    mTopToolbar.setTitle("CONTACT US");
+                    fragment = new ContactUsFragment();
+                    loadFragment(fragment);
                     return true;
                 case R.id.navigation_addfood:
-                    Intent addFood = new Intent(HomeActivity.this, AddFood.class);
-                    startActivity(addFood);
+                    mTopToolbar.setTitle("ADD FOOD");
+                    fragment = new AddFoodFragment();
+                    loadFragment(fragment);
                     return true;
             }
             return false;
@@ -50,5 +56,11 @@ public class HomeActivity extends AppCompatActivity{
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
-
+    private void loadFragment(Fragment fragment) {
+        // load fragment
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 }
