@@ -9,8 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 
@@ -33,6 +35,13 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
     private String mParam2;
     RelativeLayout layout;
     RelativeLayout calanderLayout;
+    EditText name;
+    EditText date;
+    EditText time;
+    Spinner foodType;
+    Spinner storageType;
+    EditText comment;
+    EditText foodCount;
 
     private OnFragmentInteractionListener mListener;
 
@@ -78,6 +87,17 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 layout = (RelativeLayout) view.findViewById(R.id.inputSchedule);
+
+                // read all input data and save into arrayList
+                name = (EditText) view.findViewById(R.id.inputName);
+                date = (EditText) view.findViewById(R.id.inputDate);
+                time = (EditText) view.findViewById(R.id.inputTime);
+                foodCount = (EditText) view.findViewById(R.id.inputFoodCount);
+                foodType = (Spinner) view.findViewById(R.id.spinnerFoodType);
+                storageType = (Spinner) view.findViewById(R.id.spinnerStorageType);;
+                comment = (EditText) view.findViewById(R.id.commentBox);
+                ApplicationData.addFood(name.getText().toString(), date.getText().toString(), time.getText().toString(), foodCount.getText().toString(),
+                        foodType.getSelectedItem().toString(),storageType.getSelectedItem().toString(),comment.getText().toString());
                 calanderLayout = (RelativeLayout) view.findViewById(R.id.calenderLayout);
                 layout.setVisibility(View.INVISIBLE);
                 calanderLayout.setVisibility(View.VISIBLE);
