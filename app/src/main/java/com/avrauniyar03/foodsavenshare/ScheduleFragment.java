@@ -4,9 +4,13 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
@@ -18,7 +22,7 @@ import android.widget.TextView;
  * Use the {@link ScheduleFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ScheduleFragment extends Fragment{
+public class ScheduleFragment extends Fragment implements View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -27,6 +31,8 @@ public class ScheduleFragment extends Fragment{
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    RelativeLayout layout;
+    RelativeLayout calanderLayout;
 
     private OnFragmentInteractionListener mListener;
 
@@ -66,13 +72,25 @@ public class ScheduleFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_schedule, container, false);
+        final View view = inflater.inflate(R.layout.fragment_schedule, container, false);
+        Button clickSchedule = (Button) view.findViewById(R.id.btnSchedule);
+        clickSchedule.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                layout = (RelativeLayout) view.findViewById(R.id.inputSchedule);
+                calanderLayout = (RelativeLayout) view.findViewById(R.id.calenderLayout);
+                layout.setVisibility(View.INVISIBLE);
+                calanderLayout.setVisibility(View.VISIBLE);
+            }
+        });
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
+
         }
     }
 
@@ -91,6 +109,11 @@ public class ScheduleFragment extends Fragment{
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 
     /**
