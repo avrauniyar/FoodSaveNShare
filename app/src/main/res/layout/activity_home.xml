@@ -19,6 +19,13 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
+    <GridView
+        android:layout_width="match_parent"
+        android:id="@+id/gv"
+        android:layout_height="wrap_content">
+
+    </GridView>
+
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="384dp"
