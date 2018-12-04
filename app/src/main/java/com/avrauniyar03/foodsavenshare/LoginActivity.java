@@ -8,13 +8,20 @@ import android.view.View;
 public class LoginActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
     }
 
     public void goToDonorHomeActivity(View view){
         Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToReceiverHomeActivity(View view)
+    {
+        Intent intent = new Intent(this, RHomeActivity.class);
         startActivity(intent);
     }
 }
