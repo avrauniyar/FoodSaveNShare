@@ -20,9 +20,11 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <GridView
-        android:layout_width="match_parent"
         android:id="@+id/gv"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="387dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigation">
 
     </GridView>
 
@@ -30,10 +32,13 @@
         android:id="@+id/navigation"
         android:layout_width="384dp"
         android:layout_height="50dp"
-        android:layout_marginTop="520dp"
+        android:layout_marginTop="484dp"
+        android:layout_marginBottom="8dp"
         android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="@+id/frame_container"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:menu="@menu/navigation" />
 
 </android.support.constraint.ConstraintLayout>
