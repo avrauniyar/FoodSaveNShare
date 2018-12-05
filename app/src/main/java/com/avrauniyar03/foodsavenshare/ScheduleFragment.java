@@ -1,19 +1,31 @@
 package com.avrauniyar03.foodsavenshare;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
+
+import java.util.Calendar;
 
 
 /**
@@ -24,7 +36,7 @@ import android.widget.TextView;
  * Use the {@link ScheduleFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ScheduleFragment extends Fragment implements View.OnClickListener {
+public class ScheduleFragment extends Fragment implements View.OnClickListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -36,12 +48,14 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
     RelativeLayout layout;
     RelativeLayout calanderLayout;
     EditText name;
-    EditText date;
-    EditText time;
+    static EditText date;
+    static EditText time;
     Spinner foodType;
     Spinner storageType;
     EditText comment;
     EditText foodCount;
+
+    private FragmentManager fragmentManager;
 
     private OnFragmentInteractionListener mListener;
 
@@ -82,25 +96,37 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_schedule, container, false);
+        layout = (RelativeLayout) view.findViewById(R.id.inputSchedule);
+        time = (EditText) view.findViewById(R.id.inputTime);
+
+        time.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showTimePickerDialog(layout);
+            }
+        });
+
+        date = (EditText) view.findViewById(R.id.inputDate);
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePickerDialog(layout);
+            }
+        });
         Button clickSchedule = (Button) view.findViewById(R.id.btnSchedule);
         clickSchedule.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                layout = (RelativeLayout) view.findViewById(R.id.inputSchedule);
 
                 // read all input data and save into arrayList
                 name = (EditText) view.findViewById(R.id.inputName);
-                date = (EditText) view.findViewById(R.id.inputDate);
-                time = (EditText) view.findViewById(R.id.inputTime);
                 foodCount = (EditText) view.findViewById(R.id.inputFoodCount);
                 foodType = (Spinner) view.findViewById(R.id.spinnerFoodType);
                 storageType = (Spinner) view.findViewById(R.id.spinnerStorageType);;
                 comment = (EditText) view.findViewById(R.id.commentBox);
                 ApplicationData.addFood(name.getText().toString(), date.getText().toString(), time.getText().toString(), foodCount.getText().toString(),
                         foodType.getSelectedItem().toString(),storageType.getSelectedItem().toString(),comment.getText().toString());
-                calanderLayout = (RelativeLayout) view.findViewById(R.id.calenderLayout);
                 layout.setVisibility(View.INVISIBLE);
-                calanderLayout.setVisibility(View.VISIBLE);
             }
         });
         return view;
@@ -149,5 +175,51 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public void showTimePickerDialog(View v) {
+        DialogFragment newFragment = new TimePickerFragment();
+        newFragment.show(getFragmentManager(), "timePicker");
+    }
+    public void showDatePickerDialog(View v) {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getFragmentManager(), "datePicker");
+    }
+
+    public static class TimePickerFragment extends DialogFragment
+            implements TimePickerDialog.OnTimeSetListener {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            final Calendar c = Calendar.getInstance();
+            int hour = c.get(Calendar.HOUR_OF_DAY);
+            int minute = c.get(Calendar.MINUTE);
+
+            return new TimePickerDialog(getActivity(), this, hour, minute,
+                    DateFormat.is24HourFormat(getActivity()));
+        }
+
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            time.setText(hourOfDay+":"+minute);
+        }
+    }
+
+    public static class DatePickerFragment extends DialogFragment
+            implements DatePickerDialog.OnDateSetListener {
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Use the current date as the default date in the picker
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+
+            // Create a new instance of DatePickerDialog and return it
+            return new DatePickerDialog(getActivity(), this, year, month, day);
+        }
+
+        public void onDateSet(DatePicker view, int year, int month, int day) {
+            date.setText(month+"/"+day+"/"+year);
+        }
     }
 }

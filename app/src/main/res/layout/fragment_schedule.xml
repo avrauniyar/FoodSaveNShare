@@ -6,127 +6,110 @@
     android:layout_height="match_parent"
     tools:context=".ScheduleFragment">
 
-    <RelativeLayout
-        android:id="@+id/inputSchedule"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:visibility="visible">
+        android:fillViewport="true">
 
-        <EditText
-            android:id="@+id/inputName"
-            android:layout_width="296dp"
-            android:layout_height="wrap_content"
+        <RelativeLayout
+            android:id="@+id/inputSchedule"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="101dp"
-            android:ems="10"
-            android:hint="Name"
-            android:inputType="textPersonName" />
+            android:visibility="visible">
 
-        <EditText
-            android:id="@+id/inputDate"
-            android:layout_width="295dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/inputName"
-            android:layout_centerHorizontal="true"
-            android:ems="10"
-            android:hint="Date"
-            android:inputType="date" />
+            <EditText
+                android:id="@+id/inputName"
+                android:layout_width="296dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="125dp"
+                android:ems="10"
+                android:hint="Name"
+                android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/inputTime"
-            android:layout_width="297dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="200dp"
-            android:ems="10"
-            android:hint="Time"
-            android:inputType="time" />
+            <EditText
+                android:id="@+id/inputDate"
+                android:layout_width="295dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="193dp"
+                android:ems="10"
+                android:hint="Date"
+                android:inputType="date" />
 
-        <EditText
-            android:id="@+id/inputFoodCount"
-            android:layout_width="296dp"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:ems="10"
-            android:hint="Count of the food"
-            android:inputType="number" />
+            <EditText
+                android:id="@+id/inputTime"
+                android:layout_width="297dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="271dp"
+                android:ems="10"
+                android:hint="pick time"
+                android:inputType="time" />
 
-        <Spinner
-            android:id="@+id/spinnerFoodType"
-            android:layout_width="296dp"
-            android:layout_height="43dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="209dp"
-            android:entries="@array/food_type_array"
-            android:prompt="@string/food_type_prompt" />
+            <EditText
+                android:id="@+id/inputFoodCount"
+                android:layout_width="296dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:ems="10"
+                android:hint="Count of the food"
+                android:inputType="number" />
 
-        <Spinner
-            android:id="@+id/spinnerStorageType"
-            android:layout_width="297dp"
-            android:layout_height="51dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="151dp"
-            android:entries="@array/storage_type_array"
-            android:prompt="@string/storage_type" />
+            <Spinner
+                android:id="@+id/spinnerFoodType"
+                android:layout_width="296dp"
+                android:layout_height="43dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="280dp"
+                android:entries="@array/food_type_array"
+                android:prompt="@string/food_type_prompt" />
 
-        <TextView
-            android:id="@+id/foodDetails"
-            android:layout_width="155dp"
-            android:layout_height="33dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="60dp"
-            android:text="Food Details"
-            android:textAlignment="center" />
+            <Spinner
+                android:id="@+id/spinnerStorageType"
+                android:layout_width="297dp"
+                android:layout_height="51dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="211dp"
+                android:entries="@array/storage_type_array"
+                android:prompt="@string/storage_type" />
 
-        <Button
-            android:id="@+id/btnSchedule"
-            android:layout_width="172dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="17dp"
-            android:text="Schedule" />
+            <TextView
+                android:id="@+id/foodDetails"
+                android:layout_width="155dp"
+                android:layout_height="33dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="60dp"
+                android:text="Food Details"
+                android:textAlignment="center" />
 
-        <EditText
-            android:id="@+id/commentBox"
-            android:layout_width="299dp"
-            android:layout_height="82dp"
-            android:layout_alignStart="@+id/inputName"
-            android:layout_below="@+id/spinnerStorageType"
-            android:layout_marginTop="-151dp"
-            android:ems="10"
-            android:hint="Comment"
-            android:inputType="textPersonName" />
-    </RelativeLayout>
+            <Button
+                android:id="@+id/btnSchedule"
+                android:layout_width="172dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="17dp"
+                android:text="Schedule" />
 
-    <RelativeLayout
-        android:id="@+id/calenderLayout"
-        android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <CalendarView
-            android:id="@+id/calenderView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="23dp" />
-
-        <Button
-            android:id="@+id/DonateButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="121dp"
-            android:text="Donate" />
-    </RelativeLayout>
-
+            <EditText
+                android:id="@+id/commentBox"
+                android:layout_width="299dp"
+                android:layout_height="82dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="117dp"
+                android:ems="10"
+                android:hint="Comment"
+                android:inputType="textPersonName" />
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>
