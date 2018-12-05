@@ -17,6 +17,6 @@ public class ApplicationData {
         food.setStorageType(storageType);
         food.setComment(comment);
         foodList.add(food);
-        Log.w("PrintStuf",""+name+" "+pickupDate+" "+pickupDate+" "+foodCount+" "+foodType+" "+storageType+" "+comment);
+        Log.w("PrintStuf",""+name+" "+pickupDate+" "+pickUpTime+" "+foodCount+" "+foodType+" "+storageType+" "+comment);
     }
 }

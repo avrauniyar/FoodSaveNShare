@@ -1,95 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="16dp"
     tools:context=".ScheduleFragment">
 
-    <ScrollView
+    <LinearLayout
+        android:id="@+id/inputSchedule"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:paddingTop="50dp"
+        android:paddingBottom="50dp"
+        android:orientation="vertical">
 
-        <RelativeLayout
-            android:id="@+id/inputSchedule"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:text="Food Details"/>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/inputName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:hint="name"
+                android:inputType="textPersonName"/>
+
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            app:hintEnabled="false">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/inputDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="pick date"
+                android:inputType="date"/>
+
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:visibility="visible">
+            android:layout_margin="@dimen/activity_horizontal_margin">
 
-            <EditText
-                android:id="@+id/inputName"
-                android:layout_width="296dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="125dp"
-                android:ems="10"
-                android:hint="Name"
-                android:inputType="textPersonName" />
-
-            <EditText
-                android:id="@+id/inputDate"
-                android:layout_width="295dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="193dp"
-                android:ems="10"
-                android:hint="Date"
-                android:inputType="date" />
-
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:id="@+id/inputTime"
-                android:layout_width="297dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="271dp"
-                android:ems="10"
                 android:hint="pick time"
-                android:inputType="time" />
+                android:inputType="time"/>
 
-            <EditText
-                android:id="@+id/inputFoodCount"
-                android:layout_width="296dp"
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            app:hintEnabled="false">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/foodCount"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:ems="10"
-                android:hint="Count of the food"
-                android:inputType="number" />
+                android:hint="number of items"
+                android:inputType="number"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            app:hintEnabled="false">
 
             <Spinner
                 android:id="@+id/spinnerFoodType"
-                android:layout_width="296dp"
-                android:layout_height="43dp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="280dp"
-                android:entries="@array/food_type_array"
-                android:prompt="@string/food_type_prompt" />
-
-            <Spinner
-                android:id="@+id/spinnerStorageType"
-                android:layout_width="297dp"
-                android:layout_height="51dp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="211dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="food type"
                 android:entries="@array/storage_type_array"
                 android:prompt="@string/storage_type" />
 
-            <TextView
-                android:id="@+id/foodDetails"
-                android:layout_width="155dp"
-                android:layout_height="33dp"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="60dp"
-                android:text="Food Details"
-                android:textAlignment="center" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            app:hintEnabled="false">
+
+            <Spinner
+                android:id="@+id/spinnerStorageType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="storage type"
+                android:entries="@array/storage_type_array"
+                android:prompt="@string/storage_type" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            app:hintEnabled="false">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/commentBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Comment"
+                android:inputType="textShortMessage"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            app:hintEnabled="false">
 
             <Button
                 android:id="@+id/btnSchedule"
@@ -98,18 +137,10 @@
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="17dp"
+                android:layout_gravity="center"
                 android:text="Schedule" />
 
-            <EditText
-                android:id="@+id/commentBox"
-                android:layout_width="299dp"
-                android:layout_height="82dp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="117dp"
-                android:ems="10"
-                android:hint="Comment"
-                android:inputType="textPersonName" />
-        </RelativeLayout>
-    </ScrollView>
-</RelativeLayout>
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+</ScrollView>

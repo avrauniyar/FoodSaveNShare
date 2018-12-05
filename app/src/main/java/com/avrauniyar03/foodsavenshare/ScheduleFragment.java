@@ -4,8 +4,10 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -20,6 +22,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -45,15 +48,15 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener{
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    RelativeLayout layout;
+    LinearLayout layout;
     RelativeLayout calanderLayout;
-    EditText name;
-    static EditText date;
-    static EditText time;
+    TextInputEditText name;
+    static TextInputEditText date;
+    static TextInputEditText time;
+    TextInputEditText foodCount;
     Spinner foodType;
     Spinner storageType;
-    EditText comment;
-    EditText foodCount;
+    TextInputEditText comment;
 
     private FragmentManager fragmentManager;
 
@@ -96,8 +99,8 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_schedule, container, false);
-        layout = (RelativeLayout) view.findViewById(R.id.inputSchedule);
-        time = (EditText) view.findViewById(R.id.inputTime);
+        layout = (LinearLayout) view.findViewById(R.id.inputSchedule);
+        time = (TextInputEditText) view.findViewById(R.id.inputTime);
 
         time.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,7 +109,7 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener{
             }
         });
 
-        date = (EditText) view.findViewById(R.id.inputDate);
+        date = (TextInputEditText) view.findViewById(R.id.inputDate);
         date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,20 +122,20 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener{
             public void onClick(View v) {
 
                 // read all input data and save into arrayList
-                name = (EditText) view.findViewById(R.id.inputName);
-                foodCount = (EditText) view.findViewById(R.id.inputFoodCount);
+                name = (TextInputEditText) view.findViewById(R.id.inputName);
+                foodCount = (TextInputEditText) view.findViewById(R.id.foodCount);
                 foodType = (Spinner) view.findViewById(R.id.spinnerFoodType);
                 storageType = (Spinner) view.findViewById(R.id.spinnerStorageType);;
-                comment = (EditText) view.findViewById(R.id.commentBox);
+                comment = (TextInputEditText) view.findViewById(R.id.commentBox);
                 ApplicationData.addFood(name.getText().toString(), date.getText().toString(), time.getText().toString(), foodCount.getText().toString(),
                         foodType.getSelectedItem().toString(),storageType.getSelectedItem().toString(),comment.getText().toString());
-                layout.setVisibility(View.INVISIBLE);
+                Intent intent = new Intent(getActivity(), HomeActivity.class);
+                startActivity(intent);
             }
         });
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
