@@ -19,7 +19,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_horizontal_margin"
-            android:text="Food Details"/>
+            android:text="Food Details"
+            android:gravity="center_horizontal"
+            android:textSize="20sp"/>
+
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_horizontal_margin"
-                android:hint="name"
+                android:hint="Name"
                 android:inputType="textPersonName"/>
 
         </android.support.design.widget.TextInputLayout>
@@ -44,7 +47,7 @@
                 android:id="@+id/inputDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="pick date"
+                android:hint="Pick Date"
                 android:inputType="date"/>
 
         </android.support.design.widget.TextInputLayout>
@@ -57,7 +60,7 @@
                 android:id="@+id/inputTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="pick time"
+                android:hint="Pick Time"
                 android:inputType="time"/>
 
         </android.support.design.widget.TextInputLayout>
@@ -72,7 +75,7 @@
                 android:id="@+id/foodCount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="number of items"
+                android:hint="Number of Items"
                 android:inputType="number"/>
 
         </android.support.design.widget.TextInputLayout>
@@ -87,9 +90,9 @@
                 android:id="@+id/spinnerFoodType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="food type"
-                android:entries="@array/storage_type_array"
-                android:prompt="@string/storage_type" />
+                android:entries="@array/food_type_array"
+                android:hint="Food Type" />
+
 
         </android.support.design.widget.TextInputLayout>
 
@@ -103,9 +106,8 @@
                 android:id="@+id/spinnerStorageType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="storage type"
-                android:entries="@array/storage_type_array"
-                android:prompt="@string/storage_type" />
+                android:hint="Storage type"
+                android:entries="@array/storage_type_array" />
 
         </android.support.design.widget.TextInputLayout>
 

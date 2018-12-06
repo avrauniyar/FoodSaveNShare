@@ -8,17 +8,19 @@
     <string name="food_type_prompt">Food Type</string>
 
     <string-array name="food_type_array">
-        <item>Dry</item>
-        <item>Fridge</item>
-        <item>Canned</item>
+        <item>Select Food Type</item>
+        <item>Open Grocery (Greater than 1 month expirt)</item>
+        <item>Open Grocery (Less than 1 month expiry)</item>
+        <item>Cooked Meal</item>
+        <item>Canned Goods</item>
     </string-array>
 
     <string name="storage_type">Storage Type</string>
 
     <string-array name="storage_type_array">
+        <item>Select Storage type</item>
         <item>Dry</item>
-        <item>Fridge</item>
-
+        <item>Refrigerated</item>
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
