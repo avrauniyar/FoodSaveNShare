@@ -2,6 +2,7 @@ package com.avrauniyar03.foodsavenshare;
 
 import android.app.Application;
 import android.content.Intent;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
@@ -13,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ScrollView;
@@ -21,8 +23,11 @@ import static com.avrauniyar03.foodsavenshare.R.id.contactFragment;
 
 public class HomeActivity extends AppCompatActivity {
     private Toolbar mTopToolbar;
-    private RecyclerView rv;
+    private RecyclerView recyclerView;
     private ScrollView sv;
+    RVAdapter adapter;
+    SwipeController swipeController = null;
+
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -35,7 +40,7 @@ public class HomeActivity extends AppCompatActivity {
                 case R.id.navigation_home:
 
                     mTopToolbar.setTitle("HOME");
-                    rv.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.VISIBLE);
                     FragmentManager fm = getSupportFragmentManager();
                     for (int i = 0; i < fm.getBackStackEntryCount(); ++i) {
                         fm.popBackStack();
@@ -43,13 +48,13 @@ public class HomeActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_addfood:
                     mTopToolbar.setTitle("ADD FOOD");
-                    rv.setVisibility(View.GONE);
+                    recyclerView.setVisibility(View.GONE);
                     fragment = new ScheduleFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_contactus:
                     mTopToolbar.setTitle("CONTACT US");
-                    rv.setVisibility(View.GONE);
+                    recyclerView.setVisibility(View.GONE);
                     fragment = new ContactUsFragment();
                     loadFragment(fragment);
                     return true;
@@ -66,16 +71,12 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(mTopToolbar);
 
         // get layouts
-        rv = (RecyclerView)findViewById(R.id.rv);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
         if(ApplicationData.foodList.isEmpty()){
+
             ApplicationData.listOfFood();
         }
-        RVAdapter adapter = new RVAdapter(ApplicationData.foodList);
-        rv.setLayoutManager(llm);
-        rv.setAdapter(adapter);
         initializeAdapter();
-        adapter.notifyDataSetChanged();
+        setupRecyclerView();
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -87,14 +88,33 @@ public class HomeActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
         transaction.commit();
     }
-    private void hindFragment(Fragment fragment){
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.hide(fragment);
-        transaction.commit();
-    }
-    private void initializeAdapter(){
-        RVAdapter adapter = new RVAdapter(ApplicationData.foodList);
-        rv.setAdapter(adapter);
-    }
 
+    private void initializeAdapter(){
+        adapter = new RVAdapter(ApplicationData.foodList);
+    }
+    private void setupRecyclerView() {
+        recyclerView = (RecyclerView)findViewById(R.id.rv);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        recyclerView.setAdapter(adapter);
+
+        swipeController = new SwipeController(new SwipeControllerActions() {
+            @Override
+            public void onRightClicked(int position) {
+                adapter.foodInfos.remove(position);
+                adapter.notifyItemRemoved(position);
+                adapter.notifyItemRangeChanged(position, adapter.getItemCount());
+            }
+        });
+
+        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
+        itemTouchhelper.attachToRecyclerView(recyclerView);
+
+        recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+            @Override
+            public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
+                swipeController.onDraw(c);
+            }
+        });
+    }
 }
