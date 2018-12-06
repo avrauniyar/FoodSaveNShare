@@ -1,6 +1,7 @@
 package com.avrauniyar03.foodsavenshare;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -36,7 +37,7 @@ public class RHomeActivity extends AppCompatActivity {
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_contactus_r:
-                    mTopToolbar.setTitle("CONTACT US");
+                    mTopToolbar.setTitle("CONTACT");
                     fragment = new ContactUsFragment();
                     loadFragment(fragment);
                     return true;
@@ -51,6 +52,7 @@ public class RHomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_r);
         mTopToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(mTopToolbar);
+        mTopToolbar.setTitleTextColor(Color.parseColor("#ddffea"));
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigationR);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
