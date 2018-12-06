@@ -1,13 +1,16 @@
 package com.avrauniyar03.foodsavenshare;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 public class RHomeActivity extends AppCompatActivity {
     private Toolbar mTopToolbar;
@@ -22,10 +25,14 @@ public class RHomeActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_home_r:
                     mTopToolbar.setTitle("HOME");
+                    FragmentManager fm = getSupportFragmentManager();
+                    for (int i = 0; i < fm.getBackStackEntryCount(); ++i) {
+                        fm.popBackStack();
+                    }
                     return true;
-                case R.id.navigation_schedule_r:
-                    mTopToolbar.setTitle("SCHEDULE");
-                    fragment = new ScheduleFragment();
+                case R.id.navigation_foodList_r:
+                    mTopToolbar.setTitle("FOOD LIST");
+                    fragment = new DisplayFoodList();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_contactus_r:
@@ -54,6 +61,9 @@ public class RHomeActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
         transaction.commit();
     }
-
+    public void goToLoginActivity(View view){
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
 
 }

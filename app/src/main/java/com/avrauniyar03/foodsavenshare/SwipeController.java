@@ -155,15 +155,25 @@ class SwipeController extends Callback {
         View itemView = viewHolder.itemView;
         Paint p = new Paint();
 
+
         RectF leftButton = new RectF(itemView.getLeft(), itemView.getTop(), itemView.getLeft() + buttonWidthWithoutPadding, itemView.getBottom());
         p.setColor(Color.BLUE);
         c.drawRoundRect(leftButton, corners, corners, p);
+        if(UserRoleConstants.isDonor){
         drawText("EDIT", c, leftButton, p);
+        }else{
+            drawText("", c, leftButton, p);
+        }
 
         RectF rightButton = new RectF(itemView.getRight() - buttonWidthWithoutPadding, itemView.getTop(), itemView.getRight(), itemView.getBottom());
         p.setColor(Color.RED);
         c.drawRoundRect(rightButton, corners, corners, p);
-        drawText("DELETE", c, rightButton, p);
+        if(UserRoleConstants.isReceiver){
+            drawText("ADD", c, rightButton, p);
+        }else{
+            drawText("DELETE", c, rightButton, p);
+        }
+
 
         buttonInstance = null;
         if (buttonShowedState == ButtonsState.LEFT_VISIBLE) {
