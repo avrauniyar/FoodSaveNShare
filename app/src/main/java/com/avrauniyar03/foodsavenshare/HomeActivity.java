@@ -1,27 +1,20 @@
 package com.avrauniyar03.foodsavenshare;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
-import android.widget.Spinner;
-import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 public class HomeActivity extends AppCompatActivity {
     private Toolbar mTopToolbar;
+    private RecyclerView rv;
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -33,19 +26,23 @@ public class HomeActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     mTopToolbar.setTitle("HOME");
+                    rv.setVisibility(View.VISIBLE);
                     return true;
                 case R.id.navigation_schedule:
                     mTopToolbar.setTitle("SCHEDULE");
+                    rv.setVisibility(View.GONE);
                     fragment = new ScheduleFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_contactus:
                     mTopToolbar.setTitle("CONTACT US");
+                    rv.setVisibility(View.GONE);
                     fragment = new ContactUsFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_addfood:
                     mTopToolbar.setTitle("ADD FOOD");
+                    rv.setVisibility(View.GONE);
                     fragment = new AddFoodFragment();
                     loadFragment(fragment);
                     return true;
@@ -60,6 +57,14 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         mTopToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(mTopToolbar);
+
+        rv = (RecyclerView)findViewById(R.id.rv);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        RVAdapter adapter = new RVAdapter(ApplicationData.setupData());
+        rv.setLayoutManager(llm);
+        rv.setAdapter(adapter);
+        initializeAdapter();
+
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
@@ -70,6 +75,9 @@ public class HomeActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
         transaction.commit();
     }
-
+    private void initializeAdapter(){
+        RVAdapter adapter = new RVAdapter(ApplicationData.setupData());
+        rv.setAdapter(adapter);
+    }
 
 }
