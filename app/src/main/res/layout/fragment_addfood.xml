@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_horizontal_margin"
             android:text="Food Details"
+            android:textStyle="bold"
             android:gravity="center_horizontal"
             android:textSize="20sp"/>
 
@@ -156,7 +157,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="17dp"
                 android:layout_gravity="center"
-                android:text="Submit" />
+                android:text="Submit"
+                android:background="#3a606e"
+                android:textColor="#ddffea" />
 
         </android.support.design.widget.TextInputLayout>
 

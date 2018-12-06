@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_color_selector"
     tools:context=".LoginActivity">
 
     <FrameLayout
@@ -31,7 +32,9 @@
         android:layout_marginBottom="28dp"
         android:text="Donor"
         android:textSize="22sp"
+        android:textColor="#ddffea"
         android:onClick="goToDonorHomeActivity"
+        android:background="#3a606e"
         app:layout_constraintBottom_toTopOf="@+id/btnReceiverLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -47,6 +50,8 @@
         android:text="Receiver"
         android:onClick="goToReceiverHomeActivity"
         android:textSize="22sp"
+        android:background="#3a606e"
+        android:textColor="#ddffea"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

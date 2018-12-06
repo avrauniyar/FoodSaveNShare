@@ -3,6 +3,7 @@ package com.avrauniyar03.foodsavenshare;
 import android.app.Application;
 import android.content.Intent;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
@@ -31,7 +32,6 @@ public class HomeActivity extends AppCompatActivity {
     SwipeController swipeController = null;
 
 
-
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -55,7 +55,7 @@ public class HomeActivity extends AppCompatActivity {
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_contactus:
-                    mTopToolbar.setTitle("CONTACT US");
+                    mTopToolbar.setTitle("CONTACT");
                     recyclerView.setVisibility(View.GONE);
                     fragment = new ContactUsFragment();
                     loadFragment(fragment);
@@ -71,7 +71,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         mTopToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(mTopToolbar);
-
+        mTopToolbar.setTitleTextColor(Color.parseColor("#ddffea"));
         // get layouts
         if(ApplicationData.foodList.isEmpty()){
 

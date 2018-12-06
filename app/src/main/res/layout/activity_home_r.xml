@@ -5,22 +5,26 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_color_selector"
     tools:context=".HomeActivity">
     <android.support.v7.widget.Toolbar
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="80dp"
         android:elevation="4dp"
-        android:background="@color/colorPrimary"
+        android:background="#3a606e"
         android:gravity="center_horizontal">
 
         <Button
             android:id="@+id/exit"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:gravity="top|left"
+            android:layout_gravity="end"
             android:drawableBottom="@drawable/ic_exit_to_app_black_24dp"
             android:onClick="goToLoginActivity"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            android:background="#3a606e"
             />
     </android.support.v7.widget.Toolbar>
 
@@ -45,7 +49,7 @@
         android:layout_marginBottom="0dp"
         android:layout_marginEnd="0dp"
         android:layout_marginTop="556dp"
-        android:background="?android:attr/windowBackground"
+        android:background="#b4ebca"
         app:layout_constraintBottom_toBottomOf="@+id/frame_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
