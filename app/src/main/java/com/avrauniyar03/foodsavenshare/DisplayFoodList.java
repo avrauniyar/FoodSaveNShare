@@ -15,6 +15,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -136,6 +139,10 @@ public class DisplayFoodList extends Fragment {
         swipeController = new SwipeController(new SwipeControllerActions() {
             @Override
             public void onRightClicked(int position) {
+                // capture data here
+                if(UserRoleConstants.isReceiver && UserRoleConstants.receiverData != null && UserRoleConstants.isFoodList){
+                UserRoleConstants.receiverData.add(adapter.foodInfos.get(position));
+                }
                 adapter.foodInfos.remove(position);
                 adapter.notifyItemRemoved(position);
                 adapter.notifyItemRangeChanged(position, adapter.getItemCount());

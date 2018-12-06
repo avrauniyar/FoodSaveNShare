@@ -39,7 +39,16 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.FoodViewHolder> {
 
     @Override
     public int getItemCount() {
-        return foodInfos.size() ;
+        if(UserRoleConstants.isReceiver && UserRoleConstants.isFoodList){
+            return foodInfos.size() ;
+        }else if(UserRoleConstants.isReceiver && !UserRoleConstants.isFoodList && UserRoleConstants.receiverData != null){
+            return UserRoleConstants.receiverData.size();
+        }else if(UserRoleConstants.isDonor){
+            return foodInfos.size() ;
+        }else {
+            return 0;
+        }
+
     }
 
     List<FoodInfo> foodInfos;
