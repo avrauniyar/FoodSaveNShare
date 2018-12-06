@@ -9,12 +9,12 @@ public class ApplicationData {
 
     public static void listOfFood(){
         ArrayList<FoodInfo> list = new ArrayList<>();
-        list.add(new FoodInfo("John Doe", "Tuna", "01/12/2018", "02:22", "3", "Dry", "Dry", "125 Lilac St, Syracuse, NY","Good Food Good Mode"));
-        list.add(new FoodInfo("John Doe", "Rice", "01/12/2018", "02:22", "3", "Dry", "Dry", "125 Lilac St, Syracuse, NY","Good Food Good Mode"));
-        list.add(new FoodInfo("John Doe", "Puri", "01/12/2018", "02:22", "3", "Dry", "Dry", "125 Lilac St, Syracuse, NY","Good Food Good Mode"));
-        list.add(new FoodInfo("John Doe", "Dog Food", "01/12/2018", "02:22", "3", "Dry", "Dry", "125 Lilac St, Syracuse, NY","Good Food Good Mode"));
-        list.add(new FoodInfo("John Doe", "Pizza", "01/12/2018", "02:22", "3", "Dry", "Dry", "125 Lilac St, Syracuse, NY","Good Food Good Mode"));
-        list.add(new FoodInfo("John Doe", "Pig", "01/12/2018", "02:22", "3", "Dry", "Dry", "125 Lilac St, Syracuse, NY","Good Food Good Mode"));
+        list.add(new FoodInfo("Donor Restaurant", "Tuna can", "12/06/2018", "17:22", "2", "Canned Goods", "Dry", "125 Lilac St, Syracuse, NY","Good Food Good Mode"));
+        list.add(new FoodInfo("Donor Restaurant", "Rice 10kg", "12/06/2018", "17:22", "1", "Open Grocery (Greater than 1 month expiry)", "Dry", "125 Lilac St, Syracuse, NY","Good Food Good Mode"));
+        list.add(new FoodInfo("Donor Restaurant", "Tortilla", "12/10/2018", "17:02", "3", "Open Grocery (Greater than 1 month expiry)", "Dry", "125 Lilac St, Syracuse, NY","Good Food Good Mode"));
+        list.add(new FoodInfo("Donor Restaurant", "Spinach 300g bag", "12/07/2018", "12:00", "3", "Dry", "Dry", "125 Lilac St, Syracuse, NY","Good Food Good Mode"));
+        list.add(new FoodInfo("Donor Restaurant", "Pepperoni Pizza", "12/05/2018", "20:30", "2", "Cooked Meal", "Dry", "125 Lilac St, Syracuse, NY","Good Food Good Mode"));
+        list.add(new FoodInfo("Donor Restaurant", "Pig Roast", "12/06/2018", "21:00", "1", "Cooked Meal", "Dry", "125 Lilac St, Syracuse, NY","Good Food Good Mode"));
         foodList.addAll(list);
     }
     public static void addFood(String name, String pickupDate, String pickUpTime, String foodCount, String foodType, String storageType,String address, String comment){

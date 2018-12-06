@@ -40,9 +40,11 @@
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigationR"
-        android:layout_width="375dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="556dp"
         android:background="?android:attr/windowBackground"
         app:layout_constraintBottom_toBottomOf="@+id/frame_container"
         app:layout_constraintEnd_toEndOf="parent"

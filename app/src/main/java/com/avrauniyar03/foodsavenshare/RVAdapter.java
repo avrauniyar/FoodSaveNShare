@@ -30,6 +30,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.FoodViewHolder> {
         foodViewHolder.foodQuantity.setText(foodInfos.get(i).getFoodCount());
         foodViewHolder.foodDate.setText(foodInfos.get(i).getDate());
         foodViewHolder.foodTime.setText(foodInfos.get(i).getTime());
+        foodViewHolder.pickupAddress.setText(foodInfos.get(i).getAddress());
         //foodInfos.remove(i);
         //notifyItemRemoved(i);
        // notifyItemRangeChanged(i, foodInfos.size());
@@ -52,6 +53,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.FoodViewHolder> {
         TextView foodQuantity;
         TextView foodDate;
         TextView foodTime;
+        TextView pickupAddress;
 
         FoodViewHolder(View itemView) {
             super(itemView);
@@ -60,6 +62,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.FoodViewHolder> {
             foodQuantity = (TextView)itemView.findViewById(R.id.food_quantity);
             foodDate = (TextView)itemView.findViewById(R.id.pickup_date);
             foodTime = (TextView)itemView.findViewById(R.id.pickup_time);
+            pickupAddress = (TextView)itemView.findViewById(R.id.pickup_address);
 
         }
     }
