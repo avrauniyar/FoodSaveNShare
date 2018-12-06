@@ -40,12 +40,6 @@ public class HomeActivity extends AppCompatActivity {
                     fragment = new ContactUsFragment();
                     loadFragment(fragment);
                     return true;
-                case R.id.navigation_addfood:
-                    mTopToolbar.setTitle("ADD FOOD");
-                    rv.setVisibility(View.GONE);
-                    fragment = new AddFoodFragment();
-                    loadFragment(fragment);
-                    return true;
             }
             return false;
         }

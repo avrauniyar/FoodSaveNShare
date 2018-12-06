@@ -33,11 +33,6 @@ public class RHomeActivity extends AppCompatActivity {
                     fragment = new ContactUsFragment();
                     loadFragment(fragment);
                     return true;
-                case R.id.navigation_foodList_r:
-                    mTopToolbar.setTitle("ADD FOOD");
-                    fragment = new AddFoodFragment();
-                    loadFragment(fragment);
-                    return true;
             }
             return false;
         }
