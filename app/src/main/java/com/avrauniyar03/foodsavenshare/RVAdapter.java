@@ -30,7 +30,10 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.FoodViewHolder> {
         foodViewHolder.foodQuantity.setText(foodInfos.get(i).getFoodCount());
         foodViewHolder.foodDate.setText(foodInfos.get(i).getDate());
         foodViewHolder.foodTime.setText(foodInfos.get(i).getTime());
-
+        //foodInfos.remove(i);
+        //notifyItemRemoved(i);
+       // notifyItemRangeChanged(i, foodInfos.size());
+       // notifyDataSetChanged();
     }
 
     @Override

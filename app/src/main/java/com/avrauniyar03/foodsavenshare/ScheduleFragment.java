@@ -3,7 +3,6 @@ package com.avrauniyar03.foodsavenshare;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,21 +10,16 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.util.Calendar;
@@ -57,6 +51,8 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener{
     Spinner foodType;
     Spinner storageType;
     TextInputEditText comment;
+    TextInputEditText address;
+    ScrollView sv;
 
     private FragmentManager fragmentManager;
 
@@ -98,7 +94,7 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_schedule, container, false);
+        final View view = inflater.inflate(R.layout.fragment_addfood, container, false);
         layout = (LinearLayout) view.findViewById(R.id.inputSchedule);
         time = (TextInputEditText) view.findViewById(R.id.inputTime);
 
@@ -125,10 +121,11 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener{
                 name = (TextInputEditText) view.findViewById(R.id.inputName);
                 foodCount = (TextInputEditText) view.findViewById(R.id.foodCount);
                 foodType = (Spinner) view.findViewById(R.id.spinnerFoodType);
-                storageType = (Spinner) view.findViewById(R.id.spinnerStorageType);;
+                storageType = (Spinner) view.findViewById(R.id.spinnerStorageType);
+                address = (TextInputEditText) view.findViewById(R.id.address) ;
                 comment = (TextInputEditText) view.findViewById(R.id.commentBox);
                 ApplicationData.addFood(name.getText().toString(), date.getText().toString(), time.getText().toString(), foodCount.getText().toString(),
-                        foodType.getSelectedItem().toString(),storageType.getSelectedItem().toString(),comment.getText().toString());
+                        foodType.getSelectedItem().toString(),storageType.getSelectedItem().toString(),address.getText().toString(), comment.getText().toString());
                 Intent intent = new Intent(getActivity(), HomeActivity.class);
                 startActivity(intent);
             }

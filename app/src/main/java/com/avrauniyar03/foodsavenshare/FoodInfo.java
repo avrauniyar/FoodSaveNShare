@@ -1,36 +1,38 @@
 package com.avrauniyar03.foodsavenshare;
 
 public class FoodInfo {
-    private String donarName;
+    private String donorName;
     private String foodName;
     private String date;
     private String time;
     private String foodCount;
     private String foodType;
     private String storageType;
+    private String address;
     private String comment;
 
     public FoodInfo(){
 
     }
 
-    public FoodInfo(String dn, String fn, String dt, String tm, String fc, String ft, String st, String cmt){
-        this.donarName = dn;
+    public FoodInfo(String dn, String fn, String dt, String tm, String fc, String ft, String st, String adr, String cmt){
+        this.donorName = dn;
         this.foodName = fn;
         this.date = dt;
         this.time = tm;
         this.foodCount = fc;
         this.foodType = ft;
         this.storageType = st;
+        this.address = adr;
         this.comment = cmt;
     }
 
-    public String getDonarName() {
-        return donarName;
+    public String getDonorName() {
+        return donorName;
     }
 
-    public void setDonarName(String donarName) {
-        this.donarName = donarName;
+    public void setDonorName(String donorName) {
+        this.donorName = donorName;
     }
 
     public String getDate() {
@@ -87,5 +89,13 @@ public class FoodInfo {
 
     public void setFoodName(String foodName) {
         this.foodName = foodName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
