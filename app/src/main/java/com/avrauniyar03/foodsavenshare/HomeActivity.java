@@ -17,12 +17,14 @@ import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ScrollView;
 
 import static com.avrauniyar03.foodsavenshare.R.id.contactFragment;
 
 public class HomeActivity extends AppCompatActivity {
     private Toolbar mTopToolbar;
+    private Button exit;
     private RecyclerView recyclerView;
     private ScrollView sv;
     RVAdapter adapter;
@@ -116,5 +118,9 @@ public class HomeActivity extends AppCompatActivity {
                 swipeController.onDraw(c);
             }
         });
+    }
+    public void goToLoginActivity(View view){
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 }

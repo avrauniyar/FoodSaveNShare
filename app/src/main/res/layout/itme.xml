@@ -11,7 +11,7 @@
     card_view:cardCornerRadius="4dp"
     card_view:cardElevation="3dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,6 +48,6 @@
             android:layout_below="@id/pickup_date"
             android:text="01/22/1993"
             android:textSize="15sp" />
-    </LinearLayout>
+    </RelativeLayout>
 
 </android.support.v7.widget.CardView>
